@@ -1,0 +1,77 @@
+{% extends "productos/product_base.html" %}
+{% block content %}
+  <main class="container">
+    <!-- Contenedor principal centrado -->
+    <div class="text-center my-4">
+      <h1 class="fw-bold">Products</h1>
+      
+      {% if request.user.is_staff %}
+        <a href="{% url 'products:create_product' %}" class="btn btn-success mt-2">Agregar Producto</a>
+      {% endif %}
+    </div>
+
+    <!-- Formulario de filtro por categoría -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6">
+        <form method="get" action="">
+          {% csrf_token %}
+          <div class="input-group">
+            {{ form.category }}  <!-- Aquí se incluye el formulario de categoría -->
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        {% for product in products %}
+          <div class="card mb-4 shadow-lg">
+            <div class="row g-0 align-items-center">
+              <!-- Columna de información -->
+              <div class="col-md-6 p-3">
+                <div class="card-body">
+                  <h2 class="card-title">
+                    {% if user.is_staff %}
+                      <a href="{% url 'products:product_detail' product.id %}" class="text-decoration-none fw-bold text-primary">
+                        {{ product.name }}
+                      </a>
+                    {% else %}
+                      <a href="{% url 'products:buy_product' product.id %}" class="text-decoration-none fw-bold text-primary">
+                        {{ product.name }}
+                      </a>
+                    {% endif %}
+                  </h2>
+                  <p class="card-text"><strong>Descripción:</strong> {{ product.description }}</p>
+                  <p class="card-text"><strong>Precio:</strong> ${{ product.price }}</p>
+                  <p class="card-text"><strong>Categoría:</strong> {{ product.category }}</p>
+                  <p class="card-text">
+                    <strong>Disponibilidad:</strong>
+                    <span class="badge {% if product.is_available %}bg-success{% else %}bg-danger{% endif %}">
+                      {% if product.is_available %} Disponible {% else %} No disponible {% endif %}
+                    </span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Columna de imagen -->
+              <div class="col-md-6 text-center p-3">
+                {% if product.image %}
+                  <a href="{% if user.is_staff %}{% url 'products:product_detail' product.id %}{% else %}
+                  {% url 'products:buy_product' product.id %}{% endif %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded">
+                  </a>
+                {% else %}
+                  <p class="text-muted"><em>No hay imagen disponible</em></p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <p class="text-center">No hay productos disponibles.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+{% endblock %}
+

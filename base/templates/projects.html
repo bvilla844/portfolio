@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}Projects - Portfolio{% endblock %}
+
+{% block content %}
+    <!-- Projects Section -->
+    <section id="projects">
+        <h1 class="t-center my-2 t-white f-2">Projects</h1>
+        <div class="projects-container flex s-center wrap">
+            <div class="projects-item flex f-col s-center items-center col-3">
+                <h1 class="t-white poppins">Compraventa web page</h1>
+                <p class="t-white poppins">This is a functional shopping app intended to be a clone of Amazon and some of its features. This is an app where people can buy and sell awesome stuff, is mixed with my design style and features that I thought would make it look better. This was created with Python and Django framework and incorporates, firebase authentication, role users, orders and products.</p>
+                <div class="img-container">
+                    <img src="{% static 'images/compraventa.png' %}" alt="compraventa1">
+                </div>
+                <div class="img-container">
+                    <img src="{% static 'images/compraventa2.png' %}" alt="compraventa1">
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="{% url 'products:signin' %}" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="{% url 'products:signin' %}" target="_blank" class="btn m-top live">Live Link</a>
+                </div>
+                </div>
+
+            <div class="projects-item flex f-col s-center items-center">
+               
+                    <h1 class="t-white poppins">To do list</h1>
+                    <p class="t-white poppins">This project is a simple yet fully functional To-Do List web application built with Python and the Django framework. It serves as a foundational CRUD (Create, Read, Update, Delete) application where users can manage their daily tasks efficiently. The app includes user authentication, allowing individuals to register, log in, and securely manage their personal task list.</p>
+                    <div class="img-container">
+                        <img src="{% static 'images/to_do1.png' %}" alt="compraventa1">
+                    </div>
+                    <div class="img-container">
+                        <img src="{% static 'images/to_do2.png' %}" alt="compraventa1">
+                    </div>
+                    <div class="buttons flex s-around">
+                        <a href="{% url 'login' %}" target="_blanks"
+                            class="btn mx-1 m-top">GitHub</a>
+                        <a href="{% url 'login' %}" target="_blanks" class="btn m-top live">Live
+                            Link</a>
+                    </div>
+                </div>
+            <div class="projects-item flex f-col s-center items-center">
+               
+                <h1 class="t-white poppins">Python Mini-projects</h1>
+                <p class="t-white poppins">This project is a curated collection of mini-projects developed with Python, each designed to explore and reinforce a key programming concept or fundamental. From simple console applications to logic-driven programs, these projects collectively showcase my journey in mastering Python and building a solid foundation in software development.</p>
+                <div class="img-container">
+                    <img src="{% static 'images/image.png' %}" alt="compraventa1">
+                </div>
+                <div class="img-container">
+                    <img src="{% static 'images/python.jpg' %}" alt="compraventa1">
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="{% url 'menu' %}" target="_blanks"
+                        class="btn mx-1 m-top">GitHub</a>
+                    <a href="{% url 'menu' %}" target="_blanks" class="btn m-top live">Live
+                        Link</a>
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">My Portfolio</h1>
+            
+                <p class="t-white poppins" style="margin-bottom: 1rem;">
+                    This is my portfolio website which is created with HTML, CSS, Python and Django to describe my skill and knowledge.
+                    It showcases my work in a sleek and minimalist design, allowing the focus to be on the content itself. 
+                    The design is completely responsive, making it easy for visitors to navigate and explore my projects — and also to contact me.
+                </p>
+            
+                <div class="img-container" style="margin-bottom: 3rem;">
+                    <img src="{% static 'images/portfolio.png' %}" alt="portfolio screenshot 1">
+                </div>
+            
+                <div class="img-container" style="margin-bottom: 4rem;">
+                    <img src="{% static 'images/portfolio2.png' %}" alt="portfolio screenshot 2">
+                </div>
+            
+                <div class="buttons flex s-around" style="margin-top: 1rem;">
+                    <a href="{% url 'portfolio'%}" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="{% url 'portfolio'%}" target="_blank" class="btn m-top live">Live Link</a>
+                </div>
+            </div>
+         </div>
+
+        </div>
+    </section>
+
+{% endblock %}

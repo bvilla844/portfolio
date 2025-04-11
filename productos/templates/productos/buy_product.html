@@ -1,0 +1,50 @@
+{% extends "productos/product_base.html" %}
+{% block content %}
+  <main class="container d-flex justify-content-center align-items-center vh-100" style="min-height: 80vh; margin-top: 50px; margin-button: 10px;">
+    <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+      <div class="text-center">
+        <h1 class="mb-3">{{ product.name }}</h1>
+      </div>
+
+      {% if product.image %}
+        <div class="text-center mb-3">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+        </div>
+      {% else %}
+        <p class="text-center text-muted">
+          <em>No hay imagen disponible</em>
+        </p>
+      {% endif %}
+
+      <div class="card-body">
+        <p>
+          <strong>Descripción:</strong> {{ product.description }}
+        </p>
+        <p>
+          <strong>Precio:</strong> ${{ product.price }}
+        </p>
+        <p>
+          <strong>Categoría:</strong> {{ product.category }}
+        </p>
+        <p>
+          <strong>Disponibilidad:</strong>
+          {% if product.is_available %}
+            <span class="badge bg-success">Disponible</span>
+          {% else %}
+            <span class="badge bg-danger">No disponible</span>
+          {% endif %}
+        </p>
+      </div>
+      <div class="text-center mt-3">
+        {% if product.is_available %}
+          <a href="{% url 'products:order_product' product.id %}" class="btn btn-primary btn-lg">Comprar</a>
+        {% else %}
+          <button class="btn btn-secondary btn-lg" disabled>Compra no disponible</button>
+          <p class="text-danger mt-2">
+            <strong>Este producto no está disponible para la compra.</strong>
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

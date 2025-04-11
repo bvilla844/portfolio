@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Batalla Naval</title>
+  <link rel="stylesheet" href="{% static 'battleship/style.css' %}">
+  <style>
+    #defensaJugador, .tablero {
+      display: grid;
+      grid-template-columns: repeat(9, 30px);
+      gap: 2px;
+      margin-top: 10px;
+    }
+
+    #defensaJugador div, .tablero div {
+      width: 30px;
+      height: 30px;
+      background-color: #cce;
+      border: 1px solid #999;
+      box-sizing: border-box;
+    }
+
+    .ship {
+      background-color: #555;
+    }
+
+    .hit {
+      background-color: red;
+    }
+
+    .miss {
+      background-color: lightblue;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-section">
+    <h2>Ingresar nombres de los jugadores</h2>
+    <input id="jugador1" placeholder="Jugador 1">
+    <input id="jugador2" placeholder="Jugador 2">
+    <button id="iniciarJuego">Iniciar Juego</button>
+  </div>
+
+  <!-- Fase de Ubicación de Barcos -->
+  <div id="faseUbicacion" class="hidden">
+    <h2 id="mensajeUbicacion">Ubica tu barco de X casillas, Jugador X</h2>
+    <select id="direccion">
+      <option value="h">Horizontal</option>
+      <option value="v">Vertical</option>
+    </select>
+    <div id="defensaJugador" class="tablero"></div>
+  </div>
+
+  <!-- Fase de Ataque -->
+  <div id="faseAtaque" class="hidden">
+    <h2>Fase de Ataque</h2>
+    <div class="tableros-ataque">
+      <div>
+        <h3>Ataques de <span id="jugador1Nombre"></span></h3>
+        <div id="ataqueJugador1" class="tablero"></div>
+      </div>
+      <div>
+        <h3>Ataques de <span id="jugador2Nombre"></span></h3>
+        <div id="ataqueJugador2" class="tablero"></div>
+      </div>
+    </div>
+  </div>
+  <div id="pantalla-victoria" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  padding-top: 20%;
+  z-index: 9999;
+  animation: fadeIn 1s ease-in-out;
+">
+  <p id="mensaje-victoria"></p>
+  <p style="font-size: 1.5rem;">Reiniciando en <span id="contador-reinicio">10</span> segundos...</p>
+</div>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+
+  <script src="{% static 'battleship/script.js' %}"></script>
+</body>
+</html>

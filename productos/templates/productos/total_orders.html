@@ -1,0 +1,56 @@
+{% extends "productos/product_base.html" %}
+
+{% block content %}
+  <main class="container">
+    <div class="text-center my-4">
+      <h1 class="fw-bold">Orders</h1>
+
+      <p><strong>Total de órdenes (pendientes):</strong> {{ total_products }}</p>
+      <p><strong>Total a pagar:</strong> ${{ total_price|floatformat:2 }}</p>
+    </div>
+
+    <div class="my-4">
+      <h2 class="fw-bold">Orders detail</h2>
+      <div class="row">
+        {% for order in orders %}
+          <div class="col-md-6 mb-4">
+            <div class="card shadow-sm h-100">
+              <div class="row g-0">
+                <!-- Imagen del producto -->
+                <div class="col-md-4">
+                  {% if order.product.image %}
+                    <img src="{{ order.product.image.url }}" class="img-fluid rounded-start" alt="{{ order.product.name }}">
+                  {% else %}
+                    <p class="text-center">No hay imagen disponible</p>
+                  {% endif %}
+                </div>
+                <!-- Información de la orden -->
+                <div class="col-md-8">
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ order.product.name }}</h5>
+                    <p class="card-text"><strong>Descripción:</strong> {{ order.product.description }}</p>
+                    <p class="card-text"><strong>Precio:</strong> ${{ order.product.price|floatformat:2 }}</p>
+                    <p class="card-text"><strong>Fecha de creación:</strong> {{ order.date_created }}</p>
+                    <p class="card-text"><strong>Método de pago:</strong> {{ order.payment_method }}</p>
+                    <p class="card-text"><strong>Estado:</strong> {{ order.status }}</p>
+
+                    <!-- Botón para cambiar el estado a cancelado dentro de la card -->
+                    <form method="POST" action="{% url 'products:cancel_order' order.id %}" class="mt-auto">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger w-100" onclick="return confirm('¿Estás seguro de que deseas cancelar esta orden?');">
+                          Cancelar Orden
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% empty %}
+          <p class="text-center">No tienes órdenes pendientes.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

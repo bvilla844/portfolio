@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'productos/css/main.css' %}" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap");
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #0d1117 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Orbitron", sans-serif;
+      }
+      .container {
+        width: 100%;
+        max-width: 400px;
+      }
+      .user_card {
+        width: 100%;
+        background: rgba(18, 18, 18, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #00eaff;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+      }
+      .user_card:hover {
+        box-shadow: 0 0 25px #00eaff;
+      }
+      h3 {
+        color: #00eaff;
+        text-shadow: 0 0 10px #00eaff;
+        font-weight: 600;
+      }
+      .video-container {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px #00eaff;
+      }
+      video {
+        width: 100%;
+      }
+      .login_btn {
+        width: 100%;
+        background: #00eaff !important;
+        color: #000 !important;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #00eaff;
+        transition: all 0.3s ease-in-out;
+      }
+      .login_btn:hover {
+        background: #000 !important;
+        color: #00eaff !important;
+        box-shadow: 0 0 20px #00eaff;
+      }
+      .input-group-text {
+        background: #00eaff !important;
+        color: #000 !important;
+        border: none;
+        box-shadow: 0 0 10px #00eaff;
+      }
+      .form-control {
+        background: #121212 !important;
+        color: #00eaff !important;
+        border: 1px solid #00eaff !important;
+        text-shadow: 0 0 5px #00eaff;
+        font-weight: bold;
+      }
+      .form-control::placeholder {
+        color: rgba(0, 234, 255, 0.5) !important;
+      }
+      .mt-4 a {
+        color: #00eaff;
+        text-shadow: 0 0 5px #00eaff;
+      }
+      .mt-4 a:hover {
+        color: #fff;
+        text-shadow: 0 0 15px #00eaff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Video de fondo -->
+      <div class="video-container">
+        <video autoplay loop muted>
+          <source src="{% static 'productos/images/logogif.mp4' %}" type="video/mp4" />
+        </video>
+      </div>
+
+      <!-- Tarjeta de Login -->
+      <div class="user_card">
+        <h3 id="form-title">LOGIN</h3>
+        <div class="form_container">
+          <form method="POST" action="">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" name="username" placeholder="Username..." class="form-control" required />
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" name="password" placeholder="Password..." class="form-control" required />
+            </div>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <input class="btn login_btn" type="submit" value="Login" />
+            </div>
+          </form>
+        </div>
+
+        <!-- Mensajes de error -->
+        {% for message in messages %}
+        <p id="messages" class="text-center bg-dark text-white p-2 mt-2" style="box-shadow: 0 0 10px #00eaff;">
+          {{ message }}
+        </p>
+        {% endfor %}
+
+        <!-- Enlace a registro -->
+        <div class="mt-4">
+          <span>Don't have an account? <a href="{% url 'products:register' %}">Sign Up</a></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

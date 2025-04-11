@@ -1,0 +1,89 @@
+body {
+  font-family: sans-serif;
+  background: #1d3557;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input,
+select {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #457b9d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #a8dadc;
+  color: #1d3557;
+}
+
+/* Tableros de Ataque */
+#ataqueJugador1, #ataqueJugador2 {
+  display: grid;
+  grid-template-columns: repeat(9, 30px); /* 9 columnas de 30px */
+  grid-template-rows: repeat(9, 30px); /* 9 filas de 30px */
+  gap: 2px;
+  margin-top: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Celdas de los tableros de ataque */
+#ataqueJugador1 div, #ataqueJugador2 div {
+  width: 30px;
+  height: 30px;
+  background-color: #cce;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Estilos para cuando se hace un disparo: hit y miss */
+.hit {
+  background-color: red !important;
+}
+
+.miss {
+  background-color: lightblue !important;
+}
+
+/* Estilos para los barcos en defensa */
+.ship {
+  background-color: blue !important;
+  color: white;
+}
+
+/* Ocultar elementos cuando sea necesario */
+.hidden {
+  display: none;
+}

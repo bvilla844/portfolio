@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mini Proyectos - Portfolio{% endblock %}
+{% block extra_css %}
+<style>
+    main {
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        padding: 4rem 1rem;
+    }
+
+    .card-wrapper {
+        max-width: 1000px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 1.5rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        padding: 3rem 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .card-wrapper:hover {
+        transform: scale(1.01);
+    }
+
+    h1.display-4 {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        color: #555;
+    }
+
+    .separator {
+        height: 4px;
+        width: 100px;
+        background: #6c63ff;
+        margin: 1rem auto 2rem;
+        border-radius: 2px;
+    }
+
+    .juegos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .juego-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2rem;
+        text-decoration: none;
+        color: #333;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-left: 6px solid #6c63ff;
+    }
+
+    .juego-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(108, 99, 255, 0.2);
+    }
+
+    .juego-card h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        color: #6c63ff;
+    }
+
+    .juego-card p {
+        font-size: 1rem;
+        color: #555;
+    }
+</style>
+<style>
+    /* Solución al espacio extra debajo del contenido */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="py-5">
+    <div class="card-wrapper text-center">
+        <h1 class="display-4 mb-4">⚙️ Mini Proyectos en Python</h1>
+        <p class="lead mb-5">
+            Esta sección contiene una colección de mini proyectos desarrollados con Python y Django.
+            A través de estos ejercicios, he reforzado mis fundamentos en programación, lógica,
+            estructura de código y diseño de interfaces simples. Cada uno representa un pequeño reto
+            resuelto con creatividad y buenas prácticas.
+        </p>
+
+        <div class="juegos-grid">
+            <a href="/slot/" target="_blank" class="juego-card">
+                <h2>🎰 Slot Machine</h2>
+                <p>Prueba tu suerte con la máquina tragamonedas.</p>
+            </a>
+            <a href="/battleship/" target="_blank" class="juego-card">
+                <h2>🚢 Battleship</h2>
+                <p>Hundí todos los barcos enemigos en este clásico juego.</p>
+            </a>
+        </div>
+    </div>
+</main>
+{% endblock %}

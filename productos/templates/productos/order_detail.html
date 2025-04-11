@@ -1,0 +1,73 @@
+{% extends "productos/product_base.html" %}
+{% load static %}
+{% block content %}
+<main class="container">
+    <div class="row justify-content-center mt-5">
+
+        <!-- Card con detalles de la orden -->
+        <div class="col-md-8">
+            <div class="card mb-3 shadow-lg">
+                <div class="card-body">
+                    <h2 class="text-center">Detalle de la Orden</h2>
+                    <hr>
+                    <p><strong>Cliente:</strong> {{ order.customer.name }}</p>
+                    <p><strong>Producto:</strong> {{ order.product.name }}</p>
+                    <p><strong>Fecha:</strong> {{ order.date_created }}</p>
+                    <p><strong>Método de pago:</strong> {{ order.payment_method }}</p>
+                    <p><strong>Dirección:</strong> {{ order.address }}</p>
+                    <p><strong>Celular:</strong> {{ order.phone }}</p>
+                    <p>
+                        <strong>Estado:</strong>
+                        <span class="badge 
+                            {% if order.status == 'completado' %}bg-success
+                            {% elif order.status == 'en_proceso' %}bg-warning
+                            {% elif order.status == 'pendiente' %}bg-primary
+                            {% else %}bg-danger{% endif %}">
+                            {{ order.get_status_display }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card con formulario de edición -->
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h4 class="text-center">Actualizar Orden</h4>
+                    <hr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_payment_method" class="form-label">Método de pago</label>
+                            {{ form.payment_method }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_phone" class="form-label">Teléfono</label>
+                            {{ form.phone }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_address" class="form-label">Dirección</label>
+                            {{ form.address }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_status" class="form-label">Estado de la Orden</label>
+                            {{ form.status }}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Actualizar Orden</button>
+                    </form>
+
+                    <!-- Formulario separado para eliminar la orden -->
+                    <form method="POST" action="{% url 'delete_order' order.id %}" class="mt-2">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger w-100" onclick="return confirm('¿Estás seguro de que deseas eliminar esta orden?');">
+                            Eliminar Orden
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

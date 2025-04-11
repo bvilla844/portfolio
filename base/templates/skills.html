@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}Skills - Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- Skills Section -->
+<section id="skills">
+    <h1 class="t-center my-2 t-white f-2 skills-title">Skills</h1>
+    <div class="services-container flex s-around h-50">
+    <div class=" skills-left flex s-center items-center">
+        <img src="{% static 'images/gif1.gif' %}" alt="Skills GIF" class="skills-gif">
+    </div>
+
+    <div class="skills-right flex items-center">
+        <div class="skillss-container">
+            <div class="python bar p-relative"><span class="bar-content left t-white"> Python</span><span
+                    class="bar-content right-skills t-white">90%</span></div>
+            <div class="django bar p-relative"><span class="bar-content left t-white">Django</span><span
+                    class="bar-content right-skills t-white">80%</span></div>
+            <div class="sql bar p-relative"><span class="bar-content left t-white">SQL</span><span
+                    class="bar-content right-skills t-white">80%</span></div>
+            <div class="html bar p-relative"><span class="bar-content left t-white">Html</span><span
+                    class="bar-content right-skills t-white">50%</span></div>
+            <div class="css bar p-relative"><span class="bar-content left t-white">Css</span><span
+                    class="bar-content right-skills t-white">50%</span></div>      
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}

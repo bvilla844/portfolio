@@ -1,0 +1,41 @@
+{% extends "productos/product_base.html" %}
+{% load static %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+      <div class="card-header text-center">
+        <h2 class="order text-center p-2">Order</h2>
+      </div>
+      <div class="card-body">
+        <h4>Producto: {{ product.name }}</h4>
+        <p>Precio: ${{ product.price }}</p>
+
+        <!-- Sección de datos del usuario -->
+        <hr />
+        <p>
+          <strong>Nombre:</strong> {{ user_name }}
+        </p>
+        <p>
+          <strong>Email:</strong> {{ user_email }}
+        </p>
+        <hr />
+        <form method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            {% for field in form %}
+              <div class="mb-2">
+                {{ field.label_tag }}
+                {% if field.name == 'status' and not user.is_staff %}
+                  <input type="text" name="{{ field.name }}" value="{{ field.value|default_if_none:'pendiente' }}" class="form-control" readonly />
+                {% else %}
+                  {{ field }}
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="btn btn-success btn-lg w-100">Confirmar Compra</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

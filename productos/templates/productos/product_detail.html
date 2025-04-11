@@ -1,0 +1,74 @@
+{% extends "productos/product_base.html" %}
+
+{% block content %}
+  <main class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+
+        <!-- Sección: Título y Mensajes -->
+        <section class="mb-4">
+          <h1 class="text-center">Detalles del Producto</h1>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        </section>
+
+        <!-- Sección: Contenedor de Dos Columnas -->
+        <section class="card p-4 shadow-sm mb-4">
+          <div class="row align-items-center">
+            <!-- Columna Izquierda: Información del Producto -->
+            <div class="col-md-5">
+              <h2 class="text-primary">{{ product.name }}</h2>
+              <p><strong>Descripción:</strong> {{ product.description }}</p>
+              <p><strong>Precio:</strong> ${{ product.price }}</p>
+              <p><strong>Categoría:</strong> {{ product.get_category_display }}</p>
+              <p>
+                <strong>Disponible:</strong> 
+                <span class="badge {% if product.is_available %}bg-success{% else %}bg-danger{% endif %}">
+                  {{ product.is_available|yesno:'Sí,No' }}
+                </span>
+              </p>
+            </div>
+
+            <!-- Columna Derecha: Imagen del Producto (Más Grande) -->
+            <div class="col-md-7 text-center">
+              <div class="card p-3 shadow-lg product-image-container">
+                {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-detail-image">
+                {% else %}
+                  <p><strong>Imagen:</strong> No disponible</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Formulario para Editar -->
+        <section class="card p-4 shadow-sm mb-4">
+          <h3 class="text-warning">Editar Producto</h3>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          </form>
+        </section>
+
+        <!-- Sección: Formulario para Eliminar -->
+        <section class="card p-4 shadow-sm">
+          <h3 class="text-danger">Eliminar Producto</h3>
+          <form action="{% url 'products:delete_product' product.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">
+              Eliminar producto
+            </button>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+{% endblock %}
+

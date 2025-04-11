@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+<!-- Home Section -->
+<section id="home" class="flex s-around sw-80">
+  <div class="home-left flex items-center">
+      <div class="home-content">
+          <h6 class="poppinss">Hi, I'm</h6>
+          <h1 class="t-white">Brayan villa</h1>
+          <h4 class="poppinss">Software Engineer</h4>
+          <a href="{% static 'pdf/cv.pdf' %}"  target="_blank">
+              <button class="btn poppins">Resume</button></a>
+              
+          <a class="btn live poppins" id="hireme" href=""
+              target="_blank">Let's Talk</a>
+      </div>
+  </div>
+  <div class="home-right flex s-center items-center">
+      <div class="circle flex s-center items-center" id="mainImage">
+         
+          <img src="{% static 'images/avatar.jpeg'%}" alt="">
+      </div>
+
+  </div>
+</section>
+{% endblock %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portf </title>
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.jpeg">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>`
+    
+    <!-- Navbar Section -->
+    <nav id="navbar" class="flex s-around bg-color">
+        <div class="left-nav">
+            <h2 class="t-white">Portfolio</h2>
+        </div>
+        <div class="right-nav">
+            <ul class="flex">
+                <li><a href="#home" class="t-white roboto">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#about" class="t-white roboto">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#skills" class="t-white roboto">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="#Projects" class="t-white roboto">Projects <i class="fas fa-project-diagram"></i></a></li>
+                <li><a href="#Contact" class="t-white roboto">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            </ul>
+        </div>
+    </nav>     
+</body> 
+</html>

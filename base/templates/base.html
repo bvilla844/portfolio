@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <style>
+        /* Solución al espacio extra debajo del contenido */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav id="navbar" class="flex s-around bg-color">
+        <div class="left-nav">
+            <h2 class="t-white">Portfolio</h2>
+        </div>
+        <div class="right-nav">
+            <ul class="flex">
+                <li><a href="{% url 'portfolio' %}" class="t-white roboto">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="{% url 'about' %}" class="t-white roboto">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="{% url 'skills' %}" class="t-white roboto">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="{% url 'projects' %}" class="t-white roboto">Projects <i class="fas fa-project-diagram"></i></a></li>
+                <li><a href="{% url 'contact' %}" class="t-white roboto">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Aquí se insertará el contenido de cada página -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <ul class="flex s-center w-80 m-auto my-2 res">
+            <li><a href="{% url 'portfolio' %}" class="poppinss">Home</a></li>
+            <li><a href="{% url 'about' %}" class="poppinss">About</a></li>
+            <li><a href="{% url 'skills' %}" class="poppinss">Skills</a></li>
+            <li><a href="{% url 'projects' %}" class="poppinss">Projects</a></li>
+        </ul>
+        <ul class="flex s-center w-80 font-awesome">
+            <a href="www.linkedin.com/in/brayan-villa-7a3637325" target="_blank"><li><i class="fa-brands fa-linkedin-in"></i></li></a>
+            <a href="https://github.com/bvilla844?tab=repositories" target="_blank"><li><i class="fa-brands fa-github"></i></li></a>
+            <a href="https://www.instagram.com/brayanv42/" target="_blank"><li><i class="fa-brands fa-instagram"></i></li></a>
+        </ul>
+        <p class="t-center my-2 poppins">&copy; All Rights Reserved - <span class="cpy-white poppins">Brayan villa</span></p>
+    </footer>
+
+</body>
+</html>
