@@ -32,12 +32,14 @@
             <h2 class="t-white">Portfolio</h2>
         </div>
         <div class="right-nav">
-            <ul class="flex">
-                <li><a href="{% url 'portfolio' %}" class="t-white roboto">Home <i class="fa-solid fa-house"></i></a></li>
-                <li><a href="{% url 'about' %}" class="t-white roboto">About Me <i class="fa-solid fa-user"></i></a></li>
-                <li><a href="{% url 'skills' %}" class="t-white roboto">Skills <i class="fa-solid fa-code"></i></a></li>
-                <li><a href="{% url 'projects' %}" class="t-white roboto">Projects <i class="fas fa-project-diagram"></i></a></li>
-                <li><a href="{% url 'contact' %}" class="t-white roboto">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkBtn"><i class="fas fa-bars"></i></label>
+            <ul class="nav-menu">
+                <li><a href="{% url 'portfolio' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="{% url 'about' %}"><i class="fa-solid fa-user"></i> About Me</a></li>
+                <li><a href="{% url 'skills' %}"><i class="fa-solid fa-code"></i> Skills</a></li>
+                <li><a href="{% url 'projects' %}"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="{% url 'contact' %}"><i class="fa-solid fa-rocket"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -64,6 +66,8 @@
         </ul>
         <p class="t-center my-2 poppins">&copy; All Rights Reserved - <span class="cpy-white poppins">Brayan villa</span></p>
     </footer>
+    <!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
