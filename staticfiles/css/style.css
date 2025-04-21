@@ -1,62 +1,110 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Ubuntu:wght@300;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@500&family=Ubuntu:wght@300;500;700&display=swap');
 
-body {
-    background-color: #1f1f38;
-}
-
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
     scroll-behavior: smooth;
 }
 
+body {
+    background-color: #1f1f38;
+}
+
+/* Navbar General */
 #navbar {
     line-height: 4rem;
     position: sticky;
     top: 0;
     left: 0;
     z-index: 100;
-    border-bottom: .5px solid #ffffff52;
-    border-width: 80%;
+    border-bottom: 0.5px solid #ffffff52;
     margin-bottom: 1rem;
+    background-color: #1f1f38;
 }
 
 #navbar ul {
     list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #navbar ul li {
-    margin: 0px 1rem;
+    margin: 0 1rem;
 }
 
 #navbar ul li a {
     text-decoration: none;
-    padding: 0.5rem 0.9rem;
-
+    padding: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+    color: white;
 }
 
-.right {
-    display: none;
+/* Hover effects */
+#navbar ul li a:hover {
+    border-radius: .4rem;
+    color: #1f1f38;
+    background-color: #fff;
 }
 
+/* Responsive Menu Icon */
 .checkBtn {
     display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    padding: 1.2rem;
+    z-index: 100;
 }
 
 #check {
     display: none;
 }
 
-.nav-col a:hover {
-    border-radius: .4rem;
-    color: #1f1f38;
-    background-color: #fff;
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    #navbar ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #1f1f38;
+        top: 4rem;
+        left: -100%;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.5s ease;
+        z-index: 99;
+    }
+
+    #navbar ul li {
+        margin: 1.5rem 0;
+    }
+
+    #check:checked ~ ul {
+        left: 0;
+    }
+
+    .checkBtn {
+        display: block;
+    }
+
+    .right-nav {
+        position: relative;
+    }
 }
 
-
+#navbar {
+    max-width: 1200px;
+    margin: 0 auto; /* Esto lo centra en la pantalla */
+}
 /* Home Section */
 /* Contenedor principal */
 #home {
