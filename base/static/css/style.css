@@ -101,6 +101,11 @@ body {
     }
 }
 
+#navbar {
+    max-width: 1200px;
+    margin: 0 auto; /* Esto lo centra en la pantalla */
+}
+
 /* Home Section */
 /* Contenedor principal */
 #home {
