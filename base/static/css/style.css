@@ -26,6 +26,9 @@ body {
 
 #navbar ul {
     list-style: none;
+    display: flex;
+    justify-content: center; /* Centra los items */
+    align-items: center;
 }
 
 #navbar ul li {
@@ -34,9 +37,10 @@ body {
 
 #navbar ul li a {
     text-decoration: none;
-    padding: 0.5rem 0.9rem;
-    display: flex;
+    padding: 0.5rem 1rem;
+    display: block;
     align-items: center;
+    text-align: center;
     justify-content: center;
     gap: 0.5rem;
 }
@@ -64,7 +68,8 @@ body {
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
-    .right-nav ul {
+    /* Cuando la pantalla sea pequeña, cambia a vertical */
+    #navbar ul {
         position: fixed;
         width: 100%;
         height: 100vh;
@@ -78,7 +83,7 @@ body {
         z-index: 99;
     }
 
-    .right-nav ul li {
+    #navbar ul li {
         margin: 1.5rem 0;
     }
 
@@ -87,6 +92,7 @@ body {
         left: 0;
     }
 
+    /* Estilo para el ícono del menú en pantallas pequeñas */
     .checkBtn {
         display: block;
         position: absolute;
@@ -101,6 +107,168 @@ body {
     }
 }
 
+/* Estilos generales para el navbar (pantallas grandes) */
+#navbar ul {
+    display: flex;
+    justify-content: center; /* Centra los items */
+    align-items: center;
+}
+
+#navbar ul li {
+    margin: 0px 1rem;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    /* Cuando la pantalla sea pequeña, cambia a vertical */
+    #navbar ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #1f1f38;
+        top: 4rem; /* Altura del navbar */
+        left: -100%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.5s ease;
+        z-index: 99;
+    }
+
+    #navbar ul li {
+        margin: 1.5rem 0;
+    }
+
+    /* Mostrar menú al hacer check */
+    #check:checked ~ ul {
+        left: 0;
+    }
+
+    /* Estilo para el ícono del menú en pantallas pequeñas */
+    .checkBtn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 0;
+        padding: 1.2rem;
+        z-index: 100;
+    }
+
+    .right-nav {
+        position: relative;
+    }
+}
+
+/* Navegación en pantallas grandes (por defecto) */
+#navbar ul {
+    display: flex;
+    justify-content: center; /* Centra los elementos */
+    align-items: center;
+}
+
+#navbar ul li {
+    margin: 0px 1rem;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+}
+
+/* Hover effects */
+.nav-col a:hover {
+    border-radius: .4rem;
+    color: #1f1f38;
+    background-color: #fff;
+}
+
+/* Estilos generales para el navbar (pantallas grandes) */
+#navbar ul {
+    display: flex;
+    justify-content: center; /* Centra los items */
+    align-items: center;
+}
+
+#navbar ul li {
+    margin: 0px 1rem;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    /* Cuando la pantalla sea pequeña, cambia a vertical */
+    #navbar ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #1f1f38;
+        top: 4rem; /* Altura del navbar */
+        left: -100%;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.5s ease;
+        z-index: 99;
+    }
+
+    #navbar ul li {
+        margin: 1.5rem 0;
+    }
+
+    /* Mostrar menú al hacer check */
+    #check:checked ~ ul {
+        left: 0;
+    }
+
+    /* Estilo para el ícono del menú en pantallas pequeñas */
+    .checkBtn {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 0;
+        padding: 1.2rem;
+        z-index: 100;
+    }
+
+    .right-nav {
+        position: relative;
+    }
+}
+
+/* Navegación en pantallas grandes (por defecto) */
+#navbar ul {
+    display: flex;
+    justify-content: center; /* Centra los elementos */
+    align-items: center;
+}
+
+#navbar ul li {
+    margin: 0px 1rem;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+}
+
+/* Hover effects */
 .nav-col a:hover {
     border-radius: .4rem;
     color: #1f1f38;
